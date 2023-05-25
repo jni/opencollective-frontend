@@ -32,6 +32,7 @@ const ExpenseAttachedFiles = ({ files, onRemove, showInvoice, collective, expens
                 size={88}
                 showFileName
                 fileName={intl.formatMessage({ defaultMessage: 'Download expense' })}
+                data-cy="download-expense-invoice-btn"
               />
             )}
           </ExpenseInvoiceDownloadHelper>

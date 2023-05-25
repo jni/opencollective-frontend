@@ -1,5 +1,7 @@
 // eslint-disable-next-line node/no-unpublished-require
 const { defineConfig } = require('cypress');
+const { readPdf } = require('./test/cypress/scripts/read-pdf.ts');
+const { listFiles } = require('./test/cypress/scripts/list-files.ts');
 
 module.exports = defineConfig({
   experimentalMemoryManagement: true,
@@ -21,6 +23,7 @@ module.exports = defineConfig({
   fixturesFolder: 'test/cypress/fixtures',
   screenshotsFolder: 'test/cypress/screenshots',
   videosFolder: 'test/cypress/videos',
+  downloadsFolder: 'test/cypress/downloads',
   e2e: {
     setupNodeEvents(on, config) {
       // eslint-disable-next-line node/no-unpublished-require
@@ -38,6 +41,8 @@ module.exports = defineConfig({
           console.log(...message); // eslint-disable-line no-console
           return null;
         },
+        readPdf,
+        listFiles,
       });
 
       config.baseUrl = process.env.WEBSITE_URL || 'http://localhost:3000';
