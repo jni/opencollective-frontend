@@ -1,7 +1,6 @@
 // eslint-disable-next-line node/no-unpublished-require
 const { defineConfig } = require('cypress');
-const { readPdf } = require('./test/cypress/scripts/read-pdf.ts');
-const { listFiles } = require('./test/cypress/scripts/list-files.ts');
+const { getTextFromPdfContent } = require('./test/cypress/scripts/get-text-from-pdf-content.ts');
 
 module.exports = defineConfig({
   experimentalMemoryManagement: true,
@@ -41,8 +40,7 @@ module.exports = defineConfig({
           console.log(...message); // eslint-disable-line no-console
           return null;
         },
-        readPdf,
-        listFiles,
+        getTextFromPdfContent,
       });
 
       config.baseUrl = process.env.WEBSITE_URL || 'http://localhost:3000';
