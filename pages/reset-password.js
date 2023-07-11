@@ -21,6 +21,7 @@ import { PasswordStrengthBar } from '../components/PasswordStrengthBar';
 import StyledButton from '../components/StyledButton';
 import StyledInput from '../components/StyledInput';
 import StyledInputField from '../components/StyledInputField';
+import { StyledPasswordInput } from '../components/StyledPasswordInput';
 import { H1, P } from '../components/Text';
 import { withUser } from '../components/UserProvider';
 
@@ -183,12 +184,10 @@ class ResetPasswordPage extends React.Component {
                         />
                       }
                     >
-                      <StyledInput
+                      <StyledPasswordInput
                         fontSize="14px"
                         id="new-password"
-                        autoComplete="new-password"
-                        type="password"
-                        width={1}
+                        name="new-password"
                         autoFocus={true}
                         required={true}
                         onChange={({ target }) => {

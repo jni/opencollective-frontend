@@ -13,6 +13,7 @@ import StyledInput from './StyledInput';
 import StyledInputField from './StyledInputField';
 import StyledLink from './StyledLink';
 import StyledLinkButton from './StyledLinkButton';
+import { StyledPasswordInput } from './StyledPasswordInput';
 import { Span } from './Text';
 
 /**
@@ -231,14 +232,12 @@ export default class SignIn extends React.Component {
                   htmlFor="password"
                   my={2}
                 >
-                  <StyledInput
+                  <StyledPasswordInput
                     key={this.props.passwordRequired ? 'required' : 'initial'}
                     fontSize="14px"
                     id="password"
                     name="password"
                     autoComplete="current-password"
-                    type="password"
-                    width={1}
                     value={password}
                     autoFocus={this.props.passwordRequired ? true : false}
                     required={this.props.passwordRequired ? true : false}

@@ -30,6 +30,7 @@ import StyledCard from '../../StyledCard';
 import StyledInput from '../../StyledInput';
 import StyledInputField from '../../StyledInputField';
 import StyledModal, { ModalBody, ModalFooter, ModalHeader } from '../../StyledModal';
+import { StyledPasswordInput } from '../../StyledPasswordInput';
 import StyledTooltip from '../../StyledTooltip';
 import { H3, P } from '../../Text';
 import { TOAST_TYPE, withToasts } from '../../ToastProvider';
@@ -314,13 +315,11 @@ class UserSecurity extends React.Component {
               mb={2}
               width="100%"
             >
-              <StyledInput
+              <StyledPasswordInput
                 key={`current-password-${passwordKey}`}
                 fontSize="14px"
                 id="current-password"
-                autoComplete="current-password"
                 name="current-password"
-                type="password"
                 required
                 onChange={e => {
                   this.setState({ passwordError: null, currentPassword: e.target.value });
@@ -348,12 +347,11 @@ class UserSecurity extends React.Component {
               />
             }
           >
-            <StyledInput
+            <StyledPasswordInput
               key={`current-password-${passwordKey}`}
               fontSize="14px"
               id="new-password"
-              autoComplete="new-password"
-              type="password"
+              name="new-password"
               required
               onChange={e => {
                 this.setState({ passwordError: null, password: e.target.value });
