@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useApolloClient } from '@apollo/client';
 import dayjs from 'dayjs';
 import { cloneDeep } from 'lodash';
+import { InferGetServerSidePropsType } from 'next';
 import { useRouter } from 'next/router';
 import { defineMessages, useIntl } from 'react-intl';
 
@@ -54,7 +55,10 @@ const messages = defineMessages({
 
 const SIDE_MARGIN_WIDTH = 'calc((100% - 1200px) / 2)';
 
-const expensePageQueryHelper = getSSRQueryHelpers({
+const expensePageQueryHelper = getSSRQueryHelpers<
+  ReturnType<typeof getVariableFromQuery>,
+  ReturnType<typeof getPropsFromQuery>
+>({
   query: expensePageQuery,
   context: API_V2_CONTEXT,
   getVariablesFromContext: context => getVariableFromQuery(context.query),
@@ -75,7 +79,7 @@ const getPageMetadata = (intl, legacyExpenseId, expense) => {
   }
 };
 
-export default function ExpensePage(props: ReturnType<typeof getPropsFromQuery>) {
+export default function ExpensePage(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const intl = useIntl();
   const { LoggedInUser } = useLoggedInUser();
   const queryResult = expensePageQueryHelper.useQuery(props);
